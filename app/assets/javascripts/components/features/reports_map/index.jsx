@@ -19,20 +19,18 @@ class ReportsMap extends React.PureComponent {
   render () {
     const { intl } = this.props;
 
+    const markers = [{
+      position: {
+        lat: 25.0112183,
+        lng: 121.52067570000001,
+      },
+      key: `Taiwan`,
+      defaultAnimation: 2,
+    }];
+
     return (
       <Column icon='map' heading={intl.formatMessage(messages.title)}>
-        <ReportGoogleMap
-          containerElement={
-            <div style={{ height: `100%` }} />
-          }
-          mapElement={
-            <div style={{ height: `100%` }} />
-          }
-          onMapLoad={_.noop}
-          onMapClick={_.noop}
-          markers={markers}
-          onMarkerRightClick={_.noop}
-        />,
+        <p>create Map here.</p>
       </Column>
     );
   }
