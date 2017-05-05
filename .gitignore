@@ -19,6 +19,8 @@
 coverage
 public/system
 public/assets
+public/packs
+dump.rdb
 .env
 .env.production
 node_modules/
