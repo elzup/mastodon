@@ -24,7 +24,6 @@ import { useScroll } from 'react-router-scroll';
 import UI from '../features/ui';
 import Status from '../features/status';
 import GettingStarted from '../features/getting_started';
-import PublicTimeline from '../features/public_timeline';
 import CommunityTimeline from '../features/community_timeline';
 import AccountTimeline from '../features/account_timeline';
 import HomeTimeline from '../features/home_timeline';
@@ -34,7 +33,6 @@ import Following from '../features/following';
 import Reblogs from '../features/reblogs';
 import Favourites from '../features/favourites';
 import HashtagTimeline from '../features/hashtag_timeline';
-import Notifications from '../features/notifications';
 import FollowRequests from '../features/follow_requests';
 import GenericNotFound from '../features/generic_not_found';
 import FavouritedStatuses from '../features/favourited_statuses';
@@ -128,14 +126,7 @@ class Container extends React.PureComponent {
       return {
         mountImpersistent: false,
         renderedPersistents: [],
-        unrenderedPersistents: [
-          {pathname: '/timelines/home', component: HomeTimeline},
-          {pathname: '/timelines/public', component: PublicTimeline},
-          {pathname: '/timelines/public/local', component: CommunityTimeline},
-
-          {pathname: '/notifications', component: Notifications},
-          {pathname: '/favourites', component: FavouritedStatuses}
-        ],
+        unrenderedPersistents: [],
       };
     }, () => {
       if (this.unlistenHistory) {
@@ -314,7 +305,8 @@ class Mastodon extends React.Component {
 }
 
 Mastodon.propTypes = {
-  locale: PropTypes.string.isRequired
+  locale: PropTypes.string.isRequired,
+  gmapKey: PropTypes.string.isRequired
 };
 
 export default Mastodon;
