@@ -126,7 +126,10 @@ class Container extends React.PureComponent {
       return {
         mountImpersistent: false,
         renderedPersistents: [],
-        unrenderedPersistents: [],
+        unrenderedPersistents: [
+          {pathname: '/timelines/home', component: HomeTimeline},
+          {pathname: '/timelines/public/local', component: CommunityTimeline},
+        ],
       };
     }, () => {
       if (this.unlistenHistory) {
