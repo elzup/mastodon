@@ -1,13 +1,12 @@
 import ColumnsArea from './components/columns_area';
-import NotificationsContainer from './containers/notifications_container';
 import CommunityTimeline from '../community_timeline';
 import PropTypes from 'prop-types';
 import LoadingBarContainer from './containers/loading_bar_container';
 import HomeTimeline from '../home_timeline';
+import ReportsMap from '../reports_map';
 import Compose from '../compose';
 import TabsBar from './components/tabs_bar';
 import ModalContainer from './containers/modal_container';
-import Notifications from '../notifications';
 import { connect } from 'react-redux';
 import { isMobile } from '../../is_mobile';
 import { debounce } from 'react-decoration';
@@ -138,6 +137,7 @@ class UI extends React.PureComponent {
           <Compose withHeader={false} />
           <HomeTimeline shouldUpdateScroll={() => false} />
           <CommunityTimeline shouldUpdateScroll={() => false} />
+          <ReportsMap shouldUpdateScroll={() => false} />
         </ColumnsArea>
       );
     }
