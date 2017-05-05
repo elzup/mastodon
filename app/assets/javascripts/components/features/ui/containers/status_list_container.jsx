@@ -5,7 +5,7 @@ import Immutable from 'immutable';
 import { createSelector } from 'reselect';
 import { debounce } from 'react-decoration';
 
-const makeGetStatusIds = () => createSelector([
+export const makeGetStatusIds = () => createSelector([
   (state, { type }) => state.getIn(['settings', type], Immutable.Map()),
   (state, { type }) => state.getIn(['timelines', type, 'items'], Immutable.List()),
   (state)           => state.get('statuses'),
@@ -36,7 +36,7 @@ const makeGetStatusIds = () => createSelector([
   return showStatus;
 }));
 
-const makeMapStateToProps = () => {
+export const makeMapStateToProps = () => {
   const getStatusIds = makeGetStatusIds();
 
   const mapStateToProps = (state, props) => ({
@@ -51,7 +51,7 @@ const makeMapStateToProps = () => {
   return mapStateToProps;
 };
 
-const mapDispatchToProps = (dispatch, { type, id }) => ({
+export const mapDispatchToProps = (dispatch, { type, id }) => ({
 
   @debounce(300, true)
   onScrollToBottom () {
