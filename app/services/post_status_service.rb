@@ -27,6 +27,8 @@ class PostStatusService < BaseService
                                         sensitive: options[:sensitive],
                                         spoiler_text: options[:spoiler_text] || '',
                                         visibility: options[:visibility],
+                                        lat: options[:lat],
+                                        lon: options[:lon],
                                         language: detect_language_for(text, account),
                                         application: options[:application])
       attach_media(status, media)
