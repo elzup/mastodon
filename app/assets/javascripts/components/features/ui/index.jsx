@@ -1,12 +1,12 @@
 import ColumnsArea from './components/columns_area';
-import NotificationsContainer from './containers/notifications_container';
+import CommunityTimeline from '../community_timeline';
 import PropTypes from 'prop-types';
 import LoadingBarContainer from './containers/loading_bar_container';
 import HomeTimeline from '../home_timeline';
+import ReportsMap from '../reports_map';
 import Compose from '../compose';
 import TabsBar from './components/tabs_bar';
 import ModalContainer from './containers/modal_container';
-import Notifications from '../notifications';
 import { connect } from 'react-redux';
 import { isMobile } from '../../is_mobile';
 import { debounce } from 'react-decoration';
@@ -134,10 +134,10 @@ class UI extends React.PureComponent {
     } else {
       mountedColumns = (
         <ColumnsArea>
-          <Compose withHeader={true} />
+          <Compose withHeader={false} />
           <HomeTimeline shouldUpdateScroll={() => false} />
-          <Notifications shouldUpdateScroll={() => false} />
-          <div style={{display: 'flex', flex: '1 1 auto', position: 'relative'}}>{children}</div>
+          <CommunityTimeline shouldUpdateScroll={() => false} />
+          <ReportsMap shouldUpdateScroll={() => false} />
         </ColumnsArea>
       );
     }
@@ -148,7 +148,6 @@ class UI extends React.PureComponent {
 
         {mountedColumns}
 
-        <NotificationsContainer />
         <LoadingBarContainer className="loading-bar" />
         <ModalContainer />
         <UploadArea active={draggingOver} onClose={this.closeUploadModal} />

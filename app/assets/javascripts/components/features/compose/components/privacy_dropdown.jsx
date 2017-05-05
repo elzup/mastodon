@@ -11,7 +11,9 @@ const messages = defineMessages({
   private_long: { id: 'privacy.private.long', defaultMessage: 'Post to followers only' },
   direct_short: { id: 'privacy.direct.short', defaultMessage: 'Direct' },
   direct_long: { id: 'privacy.direct.long', defaultMessage: 'Post to mentioned users only' },
-  change_privacy: { id: 'privacy.change', defaultMessage: 'Adjust status privacy' }
+  change_privacy: { id: 'privacy.change', defaultMessage: 'Adjust status privacy' },
+  geo_short: { id: 'privacy.geo.short', defaultMessage: 'Location' },
+  geo_long: { id: 'privacy.geo.long', defaultMessage: 'Post to public timelines with location info' },
 });
 
 const iconStyle = {
@@ -67,7 +69,7 @@ class PrivacyDropdown extends React.PureComponent {
     const { open } = this.state;
 
     const options = [
-      { icon: 'globe', value: 'public', shortText: intl.formatMessage(messages.public_short), longText: intl.formatMessage(messages.public_long) },
+      { icon: 'map-marker', value: 'geo', shortText: intl.formatMessage(messages.geo_short), longText: intl.formatMessage(messages.geo_long) },{ icon: 'globe', value: 'public', shortText: intl.formatMessage(messages.public_short), longText: intl.formatMessage(messages.public_long) },
       { icon: 'unlock-alt', value: 'unlisted', shortText: intl.formatMessage(messages.unlisted_short), longText: intl.formatMessage(messages.unlisted_long) },
       { icon: 'lock', value: 'private', shortText: intl.formatMessage(messages.private_short), longText: intl.formatMessage(messages.private_long) },
       { icon: 'envelope', value: 'direct', shortText: intl.formatMessage(messages.direct_short), longText: intl.formatMessage(messages.direct_long) }
