@@ -27,17 +27,15 @@ class ReportsMap extends React.PureComponent {
       key: `Taiwan`,
       defaultAnimation: 2,
     }];
+    if (!window.gmapKey) {
+      return this.renderLoading();
+    }
 
-    console.log(window.gmapKey);
     return (
       <Column icon='map' heading={intl.formatMessage(messages.title)}>
         <ReportGoogleMap
           googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&key=${window.gmapKey}`}
-          loadingElement={
-            <div style={{ height: `100%` }}>
-              <span>Loading...</span>
-            </div>
-          }
+          loadingElement={ this.renderLoading() }
           containerElement={
             <div style={{ height: `100%` }} />
           }
@@ -53,6 +51,13 @@ class ReportsMap extends React.PureComponent {
     );
   }
 
+  renderLoading() {
+    return (
+      <div style={{ height: `100%` }}>
+        <span>Loading...</span>
+      </div>
+    );
+  }
 }
 
 ReportsMap.propTypes = {
