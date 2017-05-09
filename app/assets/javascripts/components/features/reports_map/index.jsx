@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Column from '../ui/components/column';
 import { defineMessages, injectIntl } from 'react-intl';
-import ReportGoogleMap from './components/report_google_map';
+import { ReportGoogleMap } from './components/report_google_map';
 
 import { makeMapStateToProps, mapDispatchToProps } from '../ui/containers/status_list_container';
 
@@ -27,14 +27,37 @@ class ReportsMap extends React.PureComponent {
       key: `Taiwan`,
       defaultAnimation: 2,
     }];
+    if (!window.gmapKey) {
+      return this.renderLoading();
+    }
 
     return (
       <Column icon='map' heading={intl.formatMessage(messages.title)}>
-        <p>create Map here.</p>
+        <ReportGoogleMap
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&key=${window.gmapKey}`}
+          loadingElement={ this.renderLoading() }
+          containerElement={
+            <div style={{ height: `100%` }} />
+          }
+          mapElement={
+            <div style={{ height: `100%` }} />
+          }
+          onMapLoad={() => {}}
+          onMapClick={() => {}}
+          markers={markers}
+          onMarkerRightClick={() => {}}
+        />
       </Column>
     );
   }
 
+  renderLoading() {
+    return (
+      <div style={{ height: `100%` }}>
+        <span>Loading...</span>
+      </div>
+    );
+  }
 }
 
 ReportsMap.propTypes = {
